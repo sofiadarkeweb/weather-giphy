@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Giphy from "./Giphy";
+import Button from "./Button";
 require("dotenv").config();
 
 // import dotenv from "dotenv";
@@ -51,6 +52,7 @@ function Weather(props) {
 			<h2>Today its: {textDescription}</h2>
 			<p>Temp today: {temperature}</p>
 			<p>Feels like: {feelsLike}</p>
+			<Button title="inspo" />
 		</div>
 	);
 }
