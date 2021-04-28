@@ -5,14 +5,18 @@ body {
 .App {
 	text-align: center;
 	width: 100vw;
+	height: 100vh;
 }
 
 .generated-gif {
-	height: 80%;
+	/* max-width: 80vw;
+	max-height: 50vh; */
+	padding: 1rem;
+	background-color: white;
 }
 
 .refresh-btn {
-	background-color: #4caf50; /* Green */
+	background-color: red; /* Green */
 	border: none;
 	color: white;
 	width: 5rem;

@@ -29,8 +29,10 @@ function Giphy({ description }) {
 
 	return (
 		<div>
-			<h1>Weather Today</h1>
-			<img className="generated-gif" src={gif} alt="gif" />
+			<h1>Weather Giphy Today</h1>
+			<div className="gif-wrapper">
+				<img className="generated-gif" src={gif} alt="gif" />
+			</div>
 		</div>
 	);
 }

@@ -7,11 +7,13 @@ const weatherToUrl = (weather) => {
 	const apiKey = "oj7y67dGoJOLsovSxaoWbyLH3oLftshR";
 	const limit = "20";
 
-	if (weather === "clear") {
+	if (weather === "Clear") {
 		searchTerm = "sunny";
 	} else {
 		searchTerm = weather;
 	}
+
+	console.log(weather);
 
 	const requestURLspecific = baseUrl.concat(
 		search,
