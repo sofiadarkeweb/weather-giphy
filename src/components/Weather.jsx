@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
 import Giphy from "./Giphy";
+require("dotenv").config();
+
+// import dotenv from "dotenv";
+// dotenv.config();
+// console.log(process.env);
+
+const key = process.env.REACT_APP_API_KEY;
 
 function Weather(props) {
 	let [temperature, setTemperature] = useState("");
 	let [feelsLike, setFeelsLike] = useState("");
 	let [description, setDescription] = useState("");
+	let [textDescription, setTextDescription] = useState("");
 
-	const apiKey = "ac0d90037b7074279effe6660cc6161e"; // <= add API key here. Register in the site to get the API key
 	const url = "https://api.openweathermap.org/data/2.5/weather";
 	const city = "stockholm";
 	const unit = "metric";
-	const requestURL = url.concat(
-		"?q=",
-		city,
-		"&appid=",
-		apiKey,
-		"&units=",
-		unit
-	);
-
-	// make a fetch data function, make it async -- const getData = async() => {fetch data with await in here and set state}
-
-	// useeffetc -- call the getData funtion once when the component loads
+	const requestURL = url.concat("?q=", city, "&appid=", key, "&units=", unit);
 
 	useEffect(() => {
 		getData();
 	}, []);
+
+	// make a fetch data function, make it async -- const getData = async() => {fetch data with await in here and set state}
+
+	// useeffetc -- call the getData funtion once when the component loads
 
 	const getData = async () => {
 		const data = await fetch(requestURL)
@@ -36,34 +36,19 @@ function Weather(props) {
 
 		let newTemperature = data.main.temp;
 		let newFeelsLike = data.main.feels_like;
-		let newDescription = data.weather[0].description;
-		//console.log(data.weather[0].description);
+		let newDescription = data.weather[0].main;
+		let newTextDescription = data.weather[0].description;
 
 		setTemperature(newTemperature);
 		setFeelsLike(newFeelsLike);
 		setDescription(newDescription);
+		setTextDescription(newTextDescription);
 	};
-
-	// fetch(requestURL)
-	// 	.then((response) => response.json())
-	// 	.then((data) => {
-	// 		let newTemperature = data.main.temp;
-	// 		let newFeelsLike = data.main.feels_like;
-	// 		let newDescription = data.weather[0].description;
-	// 		console.log(data.weather[0].description);
-
-	// 		setTemperature(newTemperature);
-	// 		setFeelsLike(newFeelsLike);
-	// 		setDescription(newDescription);
-	// 	})
-	// 	.catch((error) => {
-	// 		setTemperature("Big problem happened, Sorry :(");
-	// 	});
 
 	return (
 		<div>
-			{description === "clear sky" ? <Giphy description={description} /> : null}
-			<h2>Today its: {description}</h2>
+			<Giphy description={description} />
+			<h2>Today its: {textDescription}</h2>
 			<p>Temp today: {temperature}</p>
 			<p>Feels like: {feelsLike}</p>
 		</div>

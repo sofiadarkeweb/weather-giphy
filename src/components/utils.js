@@ -2,16 +2,24 @@
 
 const weatherToUrl = (weather) => {
 	let searchTerm;
-	const baseUrl = "http://api.giphy.com/v1/gifs/search?q=";
-	if (weather === "clear sky") {
+	const baseUrl = "http://api.giphy.com/v1/gifs/";
+	const search = "search?q=";
+	const apiKey = "oj7y67dGoJOLsovSxaoWbyLH3oLftshR";
+	const limit = "20";
+
+	if (weather === "clear") {
 		searchTerm = "sunny";
 	} else {
-		searchTerm = "cloudy";
+		searchTerm = weather;
 	}
 
 	const requestURLspecific = baseUrl.concat(
+		search,
 		searchTerm,
-		"&limit=10&api_key=oj7y67dGoJOLsovSxaoWbyLH3oLftshR"
+		"&limit=",
+		limit,
+		"&api_key=",
+		apiKey
 	);
 
 	return requestURLspecific;

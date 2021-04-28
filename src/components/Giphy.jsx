@@ -11,18 +11,20 @@ function Giphy({ description }) {
 	// const requestURL =
 	// 	"http://api.giphy.com/v1/gifs/search?q=snowy&limit=10&api_key=oj7y67dGoJOLsovSxaoWbyLH3oLftshR";
 
+	// make this asynch as well??
+
+	const getData = async (url) => {
+		if (description) {
+			const data = await fetch(url).then((response) => response.json());
+			console.log(data);
+			let newGif =
+				data.data[Math.floor(Math.random() * 20)].images.original.url;
+			setGif(newGif);
+		}
+	};
+
 	useEffect(() => {
-		const url = weatherToUrl(description);
-		console.log(url);
-		fetch(url)
-			.then((response) => response.json())
-			.then((data) => {
-				let newGif =
-					data.data[Math.floor(Math.random() * 10)].images.original.url;
-				console.log(newGif);
-				console.log(data);
-				setGif(newGif);
-			});
+		getData(weatherToUrl(description));
 	}, [description]);
 
 	return (
