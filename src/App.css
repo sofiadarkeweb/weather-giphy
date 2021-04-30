@@ -1,29 +1,90 @@
 body {
-	background-color: aqua;
+	background-color: salmon;
 }
 
 .App {
 	text-align: center;
 	width: 100vw;
 	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container {
+	position: relative;
 }
 
 .generated-gif {
-	/* max-width: 80vw;
-	max-height: 50vh; */
+	max-height: 60vh;
+	max-width: 80vw;
 	padding: 1rem;
 	background-color: white;
+	box-shadow: 12px 12px 2px 1px rgba(10, 10, 20, 0.2);
+	padding-left: 1rem;
 }
 
+/* .generated-gif:hover {
+	transform: rotate(-0.5deg);
+} */
+
 .refresh-btn {
-	background-color: red; /* Green */
-	border: none;
+	position: absolute;
+	margin-left: 30%;
+	margin-top: 10%;
+	font-family: "Courier New", Courier, monospace;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e);
+	animation: gradient 6s ease infinite;
 	color: white;
 	width: 5rem;
 	height: 5rem;
 	text-align: center;
 	text-decoration: none;
+	border: 3px white solid;
 	display: inline-block;
 	font-size: 16px;
 	border-radius: 50%;
+	cursor: pointer;
+	animation: rotation 5s infinite linear;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#rotate {
+}
+
+@keyframes rotation {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+	}
+}
+
+.weather-heading {
+	margin-top: 2rem;
+}
+
+.temp-text {
+	padding: 2rem;
+}
+
+.refresh-btn:hover {
+	transform: scale(1.1);
+	transition: ease-in-out 0.5s;
+}
+
+.top {
+	font-size: 0.5em;
 }

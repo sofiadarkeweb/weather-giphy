@@ -7,7 +7,7 @@ function refreshPage() {
 const Button = (props) => {
 	return (
 		<div>
-			<button className="refresh-btn" onClick={refreshPage}>
+			<button className="refresh-btn" id="rotate" onClick={refreshPage}>
 				{props.title}
 			</button>
 		</div>

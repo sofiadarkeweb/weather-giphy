@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Giphy from "./Giphy";
 import Button from "./Button";
+import Header from "./Header";
 require("dotenv").config();
 
 // import dotenv from "dotenv";
@@ -24,10 +25,6 @@ function Weather(props) {
 		getData();
 	}, []);
 
-	// make a fetch data function, make it async -- const getData = async() => {fetch data with await in here and set state}
-
-	// useeffetc -- call the getData funtion once when the component loads
-
 	const getData = async () => {
 		const data = await fetch(requestURL)
 			.then((res) => res.json())
@@ -47,12 +44,15 @@ function Weather(props) {
 	};
 
 	return (
-		<div>
+		<div className="container">
+			<Header />
+			<h1 className="weather-heading">It's {textDescription}!</h1>
+			<Button title="New GIF" />
 			<Giphy description={description} />
-			<h2>Today its: {textDescription}</h2>
-			<p>Temp today: {temperature}</p>
-			<p>Feels like: {feelsLike}</p>
-			<Button title="inspo" />
+			<p className="temp-text">
+				Today the temperature in Stockholm is {Math.round(temperature)}°C, but
+				it feels more like {Math.round(feelsLike)}°C.
+			</p>
 		</div>
 	);
 }

@@ -6,13 +6,6 @@ import { weatherToUrl } from "./utils";
 function Giphy({ description }) {
 	let [gif, setGif] = useState("");
 
-	//run function that takes the paramteter of the desciption in. Clear sky
-
-	// const requestURL =
-	// 	"http://api.giphy.com/v1/gifs/search?q=snowy&limit=10&api_key=oj7y67dGoJOLsovSxaoWbyLH3oLftshR";
-
-	// make this asynch as well??
-
 	const getData = async (url) => {
 		if (description) {
 			const data = await fetch(url).then((response) => response.json());
@@ -29,7 +22,6 @@ function Giphy({ description }) {
 
 	return (
 		<div>
-			<h1>Weather Giphy Today</h1>
 			<div className="gif-wrapper">
 				<img className="generated-gif" src={gif} alt="gif" />
 			</div>
