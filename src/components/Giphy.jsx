@@ -9,7 +9,7 @@ function Giphy({ description }) {
 	const getData = async (url) => {
 		if (description) {
 			const data = await fetch(url).then((response) => response.json());
-			console.log(data);
+			//console.log(data);
 			let newGif =
 				data.data[Math.floor(Math.random() * 20)].images.original.url;
 			setGif(newGif);
